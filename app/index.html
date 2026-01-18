@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Bebas+Neue&family=Impact&family=Oswald:wght@700&family=Roboto:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YouTube Thumbnail Generator</h1>
+            <p>Create eye-catching thumbnails for your videos</p>
+        </header>
+
+        <main>
+            <div class="editor-panel">
+                <section class="controls">
+                    <div class="control-group">
+                        <h3>Background Image</h3>
+                        <input type="file" id="backgroundInput" accept="image/*">
+                        <label for="backgroundInput" class="file-label">Choose Background</label>
+                        <span id="backgroundFileName" class="file-name">No file chosen</span>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Author Photo</h3>
+                        <input type="file" id="authorInput" accept="image/*">
+                        <label for="authorInput" class="file-label">Choose Photo</label>
+                        <span id="authorFileName" class="file-name">No file chosen</span>
+
+                        <div class="sub-controls">
+                            <label>Position:</label>
+                            <select id="authorPosition">
+                                <option value="bottom-right">Bottom Right</option>
+                                <option value="bottom-left">Bottom Left</option>
+                                <option value="top-right">Top Right</option>
+                                <option value="top-left">Top Left</option>
+                            </select>
+
+                            <label>Size:</label>
+                            <input type="range" id="authorSize" min="80" max="1000" value="120">
+                            <span id="authorSizeValue">120px</span>
+
+                            <label>
+                                <input type="checkbox" id="authorBorder" checked>
+                                Show Border
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Title Text</h3>
+                        <textarea id="titleText" placeholder="Enter your title..." rows="2">YOUR TITLE HERE</textarea>
+
+                        <div class="sub-controls">
+                            <label>Font:</label>
+                            <select id="titleFont">
+                                <option value="'Bebas Neue', sans-serif">Bebas Neue</option>
+                                <option value="'Anton', sans-serif">Anton</option>
+                                <option value="'Bangers', cursive">Bangers</option>
+                                <option value="'Oswald', sans-serif">Oswald</option>
+                                <option value="'Roboto', sans-serif">Roboto Black</option>
+                                <option value="Impact, sans-serif">Impact</option>
+                            </select>
+
+                            <label>Size:</label>
+                            <input type="range" id="titleSize" min="40" max="150" value="80">
+                            <span id="titleSizeValue">80px</span>
+
+                            <label>Text Color:</label>
+                            <input type="color" id="titleColor" value="#ffffff">
+
+                            <label>Stroke Color:</label>
+                            <input type="color" id="strokeColor" value="#000000">
+
+                            <label>Stroke Width:</label>
+                            <input type="range" id="strokeWidth" min="0" max="15" value="4">
+                            <span id="strokeWidthValue">4px</span>
+
+                            <label>Position:</label>
+                            <select id="titlePosition">
+                                <option value="center">Center</option>
+                                <option value="top">Top</option>
+                                <option value="bottom">Bottom</option>
+                            </select>
+
+                            <label>
+                                <input type="checkbox" id="titleShadow" checked>
+                                Drop Shadow
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>Overlay</h3>
+                        <div class="sub-controls">
+                            <label>
+                                <input type="checkbox" id="overlayEnabled">
+                                Enable Overlay
+                            </label>
+                            <label>Overlay Color:</label>
+                            <input type="color" id="overlayColor" value="#000000">
+                            <label>Opacity:</label>
+                            <input type="range" id="overlayOpacity" min="0" max="80" value="30">
+                            <span id="overlayOpacityValue">30%</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group templates">
+                        <h3>Templates</h3>
+                        <div class="template-buttons">
+                            <button class="template-btn" data-template="gaming">Gaming</button>
+                            <button class="template-btn" data-template="tutorial">Tutorial</button>
+                            <button class="template-btn" data-template="vlog">Vlog</button>
+                            <button class="template-btn" data-template="dramatic">Dramatic</button>
+                            <button class="template-btn" data-template="minimal">Minimal</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="preview-section">
+                    <h3>Preview (1280 x 720)</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="thumbnailCanvas" width="1280" height="720"></canvas>
+                    </div>
+                    <button id="downloadBtn" class="download-btn">Download Thumbnail</button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
